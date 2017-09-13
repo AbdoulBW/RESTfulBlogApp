@@ -1,0 +1,35 @@
+<%- include ./partials/header.ejs %>
+<div class="ui main text container">
+  <div class="ui huge header">RESTull Blog App</div>
+  <div class="ui top segment">
+    <div class="ui divided items">
+      <% blogs.forEach(function(blog){%>
+        <div class="item">
+          <div class="image">
+              <img src=" <%= blog.image  %> " alt="">
+          </div>
+          <div class="content">
+              <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+              <div class="meta">
+                  <span><%=blog.created%></span>
+              </div>
+              <div class="description">
+                  <% if (blog.body != null){ %>
+                    p><%=blog.body.substring(0,49) %></p>
+                  <%  }  else { %>
+                        <p>Body is blank</p>
+                  <% } %>
+              </div>
+              <div class="extra">
+                <a href="/blogs/<%= blog._id %>">Read More</a>
+              </div>
+          </div>
+        </div>
+     <% });  %>
+    </div>
+  </div>
+</div>
+
+
+
+<%- include ./partials/footer.ejs %>
